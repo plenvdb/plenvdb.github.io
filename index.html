@@ -113,15 +113,15 @@
                     </li>
 
                     <li class="list-inline-item">
-                        <a href="">Celong Liu</a>
+                        <a href="https://www.cct.lsu.edu/~cliu/">Celong Liu</a>
                     </li>
 
                     <li class="list-inline-item">
-                        <a href="">Chao Ma</a>
+                        <a href="https://vision.sjtu.edu.cn/">Chao Ma</a>
                     </li>
 
                     <li class="list-inline-item">
-                        <a href="">Xing Mei</a>
+                        <a href="https://xing-mei.github.io/">Xing Mei</a>
                     </li>
                 </ul>
             </div>
@@ -147,11 +147,12 @@
                 </ul>
             </div>
         </div>
+
         <div class="row mb-3 pt-2">
             <div class="col-md-8 mx-auto">
-                <video class="fullwid-vid" controls>
-                    <source src="video/PlenVDB_demo_video.mov" type="video/mp4">
-                </video>
+                <div class="embed-responsive embed-responsive-16by9 pb-3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Q_SDJiMugxk" frameborder="0" allow="accelerometer; autoplay muted; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
                 <p class="text-justify mt-2 pt-3">
                     In this paper, we present a new neural radiance field representation that aims to accelerate both the training and the inference processes with VDB, a well-established hierarchical data structure for sparse volumes. VDB is designed to enjoy the best of both sparse and dense volumes: compact data representation, and efficient random and spatially coherent data access, making it a promising data structure for NeRF data interpolation and ray casting. Our method, Plenoptic VDB (PlenVDB), directly learns the VDB data structure from a set of images with known poses with a novel training strategy and uses it for real-time rendering. Experimental results demonstrate the effectiveness and the efficiency of our method over previous methods: first, it converges faster in the training process; second, it delivers a more compact data format for NeRF data presentation; finally, it renders more efficiently on commodity graphics hardware. Our mobile PlenVDB demo achieves 30+ fps, 1280x720 px resolution on an iPhone12 mobile phone.
                 </p>
