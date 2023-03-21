@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<title>PlenVDB: A Memory Efficient VDB-Based Radiance Fields for Fast Training and Rendering</title>
+
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+
+<style>
+    /* greek-ext */
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format('woff2');
+        unicode-range: U+1F00-1FFF;
+    }
+
+    /* greek */
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');
+        unicode-range: U+0370-03FF;
+    }
+
+    /* latin-ext */
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+
+    /* latin */
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* greek-ext */
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7mxKOzY.woff2) format('woff2');
+        unicode-range: U+1F00-1FFF;
+    }
+
+    /* greek */
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4WxKOzY.woff2) format('woff2');
+        unicode-range: U+0370-03FF;
+    }
+
+    /* latin-ext */
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+
+    /* latin */
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<body>
+    <div class="container">
+        <div class="row mb-2 mt-4" id="paper-title">
+            <h1 class="col-md-12 text-center">
+                PlenVDB
+            </h1>
+            <h3 class="col-md-12 text-center">
+                A Memory Efficient VDB-Based Radiance Fields for Fast Training and Rendering
+            </h3>
+            <h3 class="col-md-12 text-center">
+                <small>CVPR 2023</small>
+            </h3>
+        </div>
+
+        <div class="row" id="authors">
+            <div class="mx-auto text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <a href="">Han Yan</a>
+                    </li>
+
+                    <li class="list-inline-item">
+                        <a href="">Celong Liu</a>
+                    </li>
+
+                    <li class="list-inline-item">
+                        <a href="">Chao Ma</a>
+                    </li>
+
+                    <li class="list-inline-item">
+                        <a href="">Xing Mei</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-2" id="links">
+            <div class="mx-auto">
+                <ul class="nav">
+                    <li class="nav-item text-center">
+                        <a href="" class="nav-link" title="Temp link">
+                            <svg style="width:48px;height:48px" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M16 0H8C6.9 0 6 .9 6 2V18C6 19.1 6.9 20 8 20H20C21.1 20 22 19.1 22 18V6L16 0M20 18H8V2H15V7H20V18M4 4V22H20V24H4C2.9 24 2 23.1 2 22V4H4M10 10V12H18V10H10M10 14V16H15V14H10Z" />
+                            </svg><br>
+                            Paper
+                        </a>
+                    <li class="nav-item text-center">
+                        <a href="" class="nav-link">
+                            <svg style="width:48px;height:48px" viewBox="0 0 65 65">
+                                <path fill="currentColor" d="M32 0a32.021 32.021 0 0 0-10.1 62.4c1.6.3 2.2-.7 2.2-1.5v-6c-8.9 1.9-10.8-3.8-10.8-3.8-1.5-3.7-3.6-4.7-3.6-4.7-2.9-2 .2-1.9.2-1.9 3.2.2 4.9 3.3 4.9 3.3 2.9 4.9 7.5 3.5 9.3 2.7a6.93 6.93 0 0 1 2-4.3c-7.1-.8-14.6-3.6-14.6-15.8a12.27 12.27 0 0 1 3.3-8.6 11.965 11.965 0 0 1 .3-8.5s2.7-.9 8.8 3.3a30.873 30.873 0 0 1 8-1.1 30.292 30.292 0 0 1 8 1.1c6.1-4.1 8.8-3.3 8.8-3.3a11.965 11.965 0 0 1 .3 8.5 12.1 12.1 0 0 1 3.3 8.6c0 12.3-7.5 15-14.6 15.8a7.746 7.746 0 0 1 2.2 5.9v8.8c0 .9.6 1.8 2.2 1.5A32.021 32.021 0 0 0 32 0z" />
+                            </svg>
+                            <br>
+                            Code
+                        </a>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-3 pt-2">
+            <div class="col-md-8 mx-auto">
+                <video class="fullwid-vid" controls>
+                    <source src="video/PlenVDB_demo_video.mov" type="video/mp4">
+                </video>
+                <p class="text-justify mt-2 pt-3">
+                    In this paper, we present a new neural radiance field representation that aims to accelerate both the training and the inference processes with VDB, a well-established hierarchical data structure for sparse volumes. VDB is designed to enjoy the best of both sparse and dense volumes: compact data representation, and efficient random and spatially coherent data access, making it a promising data structure for NeRF data interpolation and ray casting. Our method, Plenoptic VDB (PlenVDB), directly learns the VDB data structure from a set of images with known poses with a novel training strategy and uses it for real-time rendering. Experimental results demonstrate the effectiveness and the efficiency of our method over previous methods: first, it converges faster in the training process; second, it delivers a more compact data format for NeRF data presentation; finally, it renders more efficiently on commodity graphics hardware. Our mobile PlenVDB demo achieves 30+ fps, 1280x720 px resolution on an iPhone12 mobile phone.
+                </p>
+            </div>
+        </div>
+        <div class="row mb-3 pt-2">
+            <div class="col-md-8 mx-auto">
+                <img class="img-responsive" src="img/teaser.png" alt="Pipeline">
+                <p class="text-justify">
+                    Given a set of training views, our method directly optimizes a VDB model. Then a novel view can be rendered with the model. The potential of VDB is due to two advantages: fast voxel access for faster speed, and efficient storage for smaller model size. This enables efficient NeRF rendering on mobile devices.
+                </p>
+
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-8 mx-auto">
+                <h4 class="mb-3">BibTeX</h4>
+                <textarea id="bibtex" class="form-control" readonly>
+@inproceedings{hyan2023plenvdb,
+      title={PlenVDB: A Memory Efficient VDB-Based Radiance Fields for Fast Training and Rendering },
+      author={Han Yan and Celong Liu and Chao Ma and Xing Mei},
+      year={2023},
+      booktitle={CVPR},
+}</textarea>
+            </div>
+        </div>
+
+
+
+        <div class="row mb-3">
+            <div class="col-md-8 mx-auto">
+                <p class="text-justify">
+                    This website is in part based on a template of <a href="http://mgharbi.com/">Micha&euml;l Gharbi</a>, also used in <a href="https://alexyu.net/pixelnerf">PixelNeRF</a> and <a href="https://alexyu.net/plenoctrees">PlenOctrees</a>.
+                </p>
+            </div>
+        </div>
+    </div> <!-- container -->
+</body>
