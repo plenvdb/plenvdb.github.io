@@ -98,7 +98,7 @@
                 PlenVDB
             </h1>
             <h3 class="col-md-12 text-center">
-                A Memory Efficient VDB-Based Radiance Fields for Fast Training and Rendering
+                Memory Efficient VDB-Based Radiance Fields for Fast Training and Rendering
             </h3>
             <h3 class="col-md-12 text-center">
                 <small>CVPR 2023</small>
@@ -113,15 +113,15 @@
                     </li>
 
                     <li class="list-inline-item">
-                        <a href="https://www.cct.lsu.edu/~cliu/">Celong Liu</a>
-                    </li>
-
-                    <li class="list-inline-item">
                         <a href="https://vision.sjtu.edu.cn/">Chao Ma</a>
                     </li>
 
                     <li class="list-inline-item">
                         <a href="https://xing-mei.github.io/">Xing Mei</a>
+                    </li>
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.cct.lsu.edu/~cliu/">Celong Liu</a>
                     </li>
                 </ul>
             </div>
@@ -154,7 +154,7 @@
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Q_SDJiMugxk" frameborder="0" allow="accelerometer; autoplay muted; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <p class="text-justify mt-2 pt-3">
-                    In this paper, we present a new neural radiance field representation that aims to accelerate both the training and the inference processes with VDB, a well-established hierarchical data structure for sparse volumes. VDB is designed to enjoy the best of both sparse and dense volumes: compact data representation, and efficient random and spatially coherent data access, making it a promising data structure for NeRF data interpolation and ray casting. Our method, Plenoptic VDB (PlenVDB), directly learns the VDB data structure from a set of images with known poses with a novel training strategy and uses it for real-time rendering. Experimental results demonstrate the effectiveness and the efficiency of our method over previous methods: first, it converges faster in the training process; second, it delivers a more compact data format for NeRF data presentation; finally, it renders more efficiently on commodity graphics hardware. Our mobile PlenVDB demo achieves 30+ fps, 1280x720 px resolution on an iPhone12 mobile phone.
+                    In this paper, we present a new representation for neural radiance fields that accelerates both the training and the inference processes with VDB, a hierarchical data structure for sparse volumes. VDB takes both the advantages of sparse and dense volumes for compact data representation and efficient data access, being a promising data structure for NeRF data interpolation and ray marching. Our method, Plenoptic VDB (PlenVDB), directly learns the VDB data structure from a set of posed images by means of a novel training strategy and then uses it for real-time rendering. Experimental results demonstrate the effectiveness and the efficiency of our method over previous arts: First, it converges faster in the training process. Second, it delivers a more compact data format for NeRF data presentation. Finally, it renders more efficiently on commodity graphics hardware. Our mobile PlenVDB demo achieves 30+ FPS, 1280x720 resolution on an iPhone12 mobile phone.
                 </p>
             </div>
         </div>
@@ -172,15 +172,13 @@
                 <h4 class="mb-3">BibTeX</h4>
                 <textarea id="bibtex" class="form-control" readonly>
 @inproceedings{hyan2023plenvdb,
-      title={PlenVDB: A Memory Efficient VDB-Based Radiance Fields for Fast Training and Rendering },
-      author={Han Yan and Celong Liu and Chao Ma and Xing Mei},
+      title={PlenVDB: Memory Efficient VDB-Based Radiance Fields for Fast Training and Rendering },
+      author={Han Yan and Chao Ma and Xing Mei and Celong Liu},
       year={2023},
       booktitle={CVPR},
 }</textarea>
             </div>
         </div>
-
-
 
         <div class="row mb-3">
             <div class="col-md-8 mx-auto">
